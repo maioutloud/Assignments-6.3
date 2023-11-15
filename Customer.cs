@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assignments_6._3
 {
-    // customer class
-    public class Customer
+      /*-----------------------------------*/
+     /*          CUSTOMER CLASS           */
+    /*-----------------------------------*/
+    // class representing Customer properties
+    public class Customer   
     {
         public string Name { get; }
         public string PhoneNumber { get; }
@@ -18,6 +21,9 @@ namespace Assignments_6._3
             PhoneNumber = phoneNumber;
         }
     }
+      /*-----------------------------------------------*/
+     /*     QUEUE CLASS USING LINKED LIST METHOD      */
+    /*-----------------------------------------------*/
     // class representing NODE in the linked list
     class Node
     {
@@ -58,7 +64,7 @@ namespace Assignments_6._3
         }
 
         // method to enqueue
-        public void Enqueue(Customer customer)      // changed from integer to Customer class value
+        public void Enqueue(Customer customer)      // changed from integer to Customer class values
         {
             Node newest = new Node(customer, null); // changed to customer
             if(IsEmpty())
@@ -72,7 +78,6 @@ namespace Assignments_6._3
             rear = newest;
             size++;
         }
-        
         // method to dequeue
         public Customer Dequeue()                   // changed void to Customer
         {
@@ -81,7 +86,7 @@ namespace Assignments_6._3
                 Console.WriteLine("Q is empty");
                 return null;
             }
-            Customer customer = front.value;        // changed to Customer class
+            Customer customer = front.value;        // changed to Customer values
             front = front.next;
             size--;
             if(IsEmpty())

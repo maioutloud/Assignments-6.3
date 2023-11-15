@@ -14,11 +14,10 @@ namespace Assignments_6._3
     {
         // instance Q class to manage call Q
         private Q callQueue = new Q();
-        
-        // var for tracking current color on btnShow
+        // var for tracking current color on btnShow, alternating between 2 colors using an array
         private int currentColorIndex = 0;
-        // color array to swap between btnShow
         private Color[] colors = { Color.Red, Color.LightCoral };
+        
         public Form1()
         {
             InitializeComponent();
@@ -30,10 +29,13 @@ namespace Assignments_6._3
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // implement timer for alternating colors to btnShow
             timer1.Start();
             timer1.Enabled = true;
         }
-
+          /*----------------------------*/
+         /*          ENQUEUE           */
+        /*----------------------------*/
         private void btnEnq_Click(object sender, EventArgs e)
         {
             // check for empty string and default placeholder txt "Enter Name"
@@ -47,7 +49,7 @@ namespace Assignments_6._3
             {
                 // store customer name entered by "call center operator" 
                 string customerName = txtName.Text;
-                // generate random phone number as the "customer is calling in"
+                // generate random phone number to represent customer calling in
                 string phoneNumber = GeneratePhoneNumber();
 
                 // create a new customer instance to enQ
@@ -64,6 +66,9 @@ namespace Assignments_6._3
             txtName.Visible = false;
             btnEnq.Visible = false;
         }
+          /*----------------------------*/
+         /*          DEQUEUE           */
+        /*----------------------------*/
         private void btnDeq_Click(object sender, EventArgs e)
         {
             // check current list of callers in the Q
@@ -84,6 +89,7 @@ namespace Assignments_6._3
                 MessageBox.Show("Call queue is empty.", "Empty");
             }
         }
+
         private string GeneratePhoneNumber()
         {
             // generate new phone numbers using random method
@@ -117,13 +123,14 @@ namespace Assignments_6._3
 
         private void btnX_Click(object sender, EventArgs e)
         {
+            // exit app
             Application.Exit();
         }
-
-        // timer tick event to change text color on btnShow
+                
         private void timer1_Tick(object sender, EventArgs e)
         {
-            // set forecolor to colorindex
+            // misc timer tick event to change text color on btnShow
+            // set forecolor to currentcolorindex variable
             btnShow.ForeColor = colors[currentColorIndex];
 
             // switch between colors in color array (0 1)
